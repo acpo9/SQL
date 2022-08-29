@@ -1,0 +1,58 @@
+/* Create table about the people and what they do here */
+CREATE TABLE singers ('id' INTEGER, 'name' TEXT);
+INSERT INTO singers VALUES (1, 'Taylor Swift');
+INSERT INTO singers VALUES (2, 'Beyonce');
+INSERT INTO singers VALUES (3, 'Harry Styles');
+INSERT INTO singers VALUES (4, 'Lady Gaga');
+INSERT INTO singers VALUES (5, 'Justin Bieber');
+INSERT INTO singers VALUES (6, 'Nicki Minaj');
+INSERT INTO singers VALUES (7, 'Joji');
+INSERT INTO singers VALUES (8, 'Post Malone');
+INSERT INTO singers VALUES (9, 'Doja Cat');
+INSERT INTO singers VALUES (10, 'Miley Cyrus');
+
+
+CREATE TABLE songs (id INTEGER, song TEXT, artist_id INTEGER);
+INSERT INTO songs VALUES (1, 'All Too Well', 1);
+INSERT INTO songs VALUES (2, 'Boyfriend', 5);
+INSERT INTO songs VALUES (3, 'Glimpse of US', 7);
+INSERT INTO songs VALUES (4, 'As it was', 3);
+INSERT INTO songs VALUES (5, 'Poker Face', 4);
+INSERT INTO songs VALUES (6, 'Run the World', 2);
+INSERT INTO songs VALUES (7, 'Rockstar', 8);
+INSERT INTO songs VALUES (8, 'Super Bass', 6);
+INSERT INTO songs VALUES (9, 'Kiss Me More', 9);
+INSERT INTO songs VALUES (10, 'Wrecking Ball', 10);
+INSERT INTO songs VALUES (11, 'Death by a Thousand Cuts', 1);
+INSERT INTO songs VALUES (12, 'Baby', 5);
+INSERT INTO songs VALUES (13, 'Holy', 5);
+INSERT INTO songs VALUES (14, 'One Less Lonely Girl', 5);
+INSERT INTO songs VALUES (15, 'Betty', 1);
+INSERT INTO songs VALUES (16, 'Ivy', 1);
+INSERT INTO songs VALUES (17, 'Champagne Problems', 1);
+INSERT INTO songs VALUES (18, 'Getaway Car', 1);
+INSERT INTO songs VALUES (19, 'The Climb', 10);
+INSERT INTO songs VALUES (20, 'Say So', 9);
+INSERT INTO songs VALUES (21, 'Woman', 9);
+INSERT INTO songs VALUES (22, 'Love on Top', 2);
+INSERT INTO songs VALUES (23, 'Countdown', 2);
+INSERT INTO songs VALUES (24, 'Break My Soul', 2);
+INSERT INTO songs VALUES (25, 'Bad Romance', 4);
+INSERT INTO songs VALUES (26, 'Just Dance', 4);
+INSERT INTO songs VALUES (27, 'Sign of the Times', 3);
+INSERT INTO songs VALUES (28, 'Watermelon Sugar', 3);
+INSERT INTO songs VALUES (29, 'Golden', 3);
+INSERT INTO songs VALUES (30, 'Circles', 8);
+
+
+SELECT singers.name, songs.song
+FROM singers
+JOIN songs
+ON singers.id = songs.artist_id;
+
+SELECT singers.name, COUNT(*) AS total_songs
+FROM SINGERS
+JOIN songs
+ON singers.id = songs.artist_id
+GROUP BY singers.name
+ORDER BY total_songs DESC;
