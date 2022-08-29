@@ -1,5 +1,7 @@
-/* Create table about the people and what they do here */
+#Created a table that would give info from a playlist
+
 CREATE TABLE singers ('id' INTEGER, 'name' TEXT);
+
 INSERT INTO singers VALUES (1, 'Taylor Swift');
 INSERT INTO singers VALUES (2, 'Beyonce');
 INSERT INTO singers VALUES (3, 'Harry Styles');
@@ -44,12 +46,13 @@ INSERT INTO songs VALUES (28, 'Watermelon Sugar', 3);
 INSERT INTO songs VALUES (29, 'Golden', 3);
 INSERT INTO songs VALUES (30, 'Circles', 8);
 
-
+-- Joining the tables to view artist and song together
 SELECT singers.name, songs.song
 FROM singers
 JOIN songs
 ON singers.id = songs.artist_id;
 
+-- Joining the tables and showing the total songs in the playlist from each artist
 SELECT singers.name, COUNT(*) AS total_songs
 FROM SINGERS
 JOIN songs
