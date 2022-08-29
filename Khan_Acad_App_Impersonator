@@ -1,3 +1,5 @@
+#In this SQL code, I was impersonating data that I would expect to be stored in a Sodoku app for the result of games played, and then practicing updating the table
+
 CREATE TABLE sodoku (id INTEGER PRIMARY KEY AUTOINCREMENT, date TEXT, outcome TEXT, time NUMERIC);
 
 INSERT INTO sodoku (date, outcome, time) VALUES ('08-01-2022', 'Fail', 38);
@@ -8,12 +10,17 @@ INSERT INTO sodoku (date, outcome, time) VALUES ('08-05-2022', 'Win', 30);
 INSERT INTO sodoku (date, outcome, time) VALUES ('08-06-2022', 'Fail', 20);
 INSERT INTO sodoku (date, outcome, time) VALUES ('08-07-2022', 'Win', 32);
 
+-- Viewing everything I entered
 SELECT * FROM sodoku;
 
+-- Changing a loss to a win
 UPDATE sodoku SET outcome = 'Win' WHERE id = 6;
 
+-- Verifying it updated properly
 SELECT * FROM sodoku;
 
+-- Deleting an entry
 DELETE FROM sodoku WHERE id = 7;
 
+-- Verifying deletion
 SELECT * FROM sodoku;
