@@ -1,0 +1,19 @@
+CREATE TABLE sodoku (id INTEGER PRIMARY KEY AUTOINCREMENT, date TEXT, outcome TEXT, time NUMERIC);
+
+INSERT INTO sodoku (date, outcome, time) VALUES ('08-01-2022', 'Fail', 38);
+INSERT INTO sodoku (date, outcome, time) VALUES ('08-02-2022', 'Fail', 45);
+INSERT INTO sodoku (date, outcome, time) VALUES ('08-03-2022', 'Win', 50);
+INSERT INTO sodoku (date, outcome, time) VALUES ('08-04-2022', 'Win', 36);
+INSERT INTO sodoku (date, outcome, time) VALUES ('08-05-2022', 'Win', 30);
+INSERT INTO sodoku (date, outcome, time) VALUES ('08-06-2022', 'Fail', 20);
+INSERT INTO sodoku (date, outcome, time) VALUES ('08-07-2022', 'Win', 32);
+
+SELECT * FROM sodoku;
+
+UPDATE sodoku SET outcome = 'Win' WHERE id = 6;
+
+SELECT * FROM sodoku;
+
+DELETE FROM sodoku WHERE id = 7;
+
+SELECT * FROM sodoku;
