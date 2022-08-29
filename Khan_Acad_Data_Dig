@@ -1,3 +1,5 @@
+# In this SQL code I was given the table and practiced aggregating the data.
+
 CREATE TABLE topmovies(
    Rank        INTEGER,
    Title       TEXT,
@@ -111,26 +113,28 @@ INSERT INTO topmovies(Rank,Title,Studio,Worldwide,Domestic,DomesticPct,Overseas,
 INSERT INTO topmovies(Rank,Title,Studio,Worldwide,Domestic,DomesticPct,Overseas,OverseasPct,Year) VALUES (99,'Casino Royale','Sony',599.00,167.40,0.28,431.60,0.72,2006);
 INSERT INTO topmovies(Rank,Title,Studio,Worldwide,Domestic,DomesticPct,Overseas,OverseasPct,Year) VALUES (100,'Tangled','BV',591.80,200.80,0.34,391.00,0.66,2010);
 
-
+-- Viewing all movies made by Studio BV
 SELECT *
 FROM topmovies
 WHERE Studio = 'BV'
 ORDER BY Domestic;
 
+-- Calculating the sum of worldwide gross for each movie studio
 SELECT studio, SUM(Worldwide) AS total_gross
 FROM topmovies
 GROUP BY studio
 HAVING total_gross > 1000
 ORDER BY total_gross;
 
-
+-- Calculating the average worldwide gross for each movie studio
 SELECT studio, AVG(Worldwide) AS AVG_gross
 FROM topmovies
 GROUP BY studio
 HAVING AVG_gross > 1000
 ORDER BY AVG_gross;
 
-
+-- Used CASE statement to create a column to be able to group the movies by the decade they were released
+-- Calculated the sum per decade worldwide gross
 SELECT
     CASE WHEN Year >= 2020 THEN '2020s'
     WHEN Year >= 2010 AND Year < 2020 THEN '2010s'
@@ -144,7 +148,7 @@ FROM
 GROUP BY Decade
 ORDER BY Gross_Per_Decade DESC;
 
-
+-- Viewing all movies released after 2000 that grossed more domestically than overseas
 SELECT *
 FROM topmovies
 WHERE OverseasPct < DomesticPct AND Year > 2000;
