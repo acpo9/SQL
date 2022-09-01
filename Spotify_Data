@@ -40,26 +40,23 @@ ORDER BY
     number_tracks DESC;
 
 
---Trying to figure out how to output the artists that have the most tracks
-
-/*SELECT
-    artist_name, MAX(count) AS track_count
-FROM
-    (
-    SELECT COUNT(*)
-    FROM BIT_DB.Spotifydata
-    GROUP BY artist_name) AS count, BIT_DB.Spotifydata
-GROUP BY artist_name;
- 
+--What artists have the most tracks on the list?
+WITH track_count_table AS(
+    SELECT
+        artist_name, count(*) AS number_tracks
+    FROM 
+        Spotifydata AS s
+    GROUP BY artist_name)
+    
 SELECT
-    artist_name, MAX(count) AS track_count
+    artist_name, number_tracks
 FROM
-    BIT_DB.Spotifydata
-WHERE track_count IN (
-    SELECT COUNT(*)
-    FROM BIT_DB.Spotifydata
-    GROUP BY artist_name) AS count;  
-*/ 
+    track_count_table
+WHERE
+    number_tracks = (
+    SELECT MAX(number_tracks)
+    FROM track_count_table);
+    
 
 -- Looking for the most energetic songs, making a list in descending order that only includes songs that are at or above the average energy level
 SELECT
